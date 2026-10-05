@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import { path } from '../lib/paths';
+import { profile } from '../data/profile';
+const { title = 'Yucheng Xing — Machine Learning Researcher', description = 'Yucheng Xing is a researcher working on efficient generative AI, continuous-time neural modeling, and adaptive neural architectures.', active = 'home' } = Astro.props;
+const nav = [{label:'Home',url:path(),key:'home'},{label:'Research',url:path('research/'),key:'research'},{label:'Publications',url:path('publications/'),key:'publications'},{label:'CV',url:'https://yuchengxing.me/cv/',key:'cv'}];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#19384b" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href={path('favicon.svg')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="wordmark" href={path()} aria-label="Yucheng Xing home"><span class="monogram" aria-hidden="true">YX</span>Yucheng Xing</a>
+        <nav class="primary-nav" aria-label="Main navigation">
+          {nav.map(item => <a href={item.url} aria-current={active===item.key?'page':undefined}>{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap"><slot /></main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>© 2026 Yucheng Xing</span>
+        <div class="footer-links"><a href={`mailto:${profile.email}`}>Email</a><a href={profile.github}>GitHub</a><span>Updated October 2026</span></div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+---
+import type { Publication } from '../data/publications';
+import { path } from '../lib/paths';
+interface Props { paper: Publication; compact?: boolean; }
+const { paper, compact = false } = Astro.props;
+---
+<article class:list={['paper', {'paper-text-only': !paper.image}]} id={paper.id}>
+  {paper.image && <a class="paper-figure" href={paper.paper} aria-label={`Read ${paper.name}`}><img src={path(`images/${paper.image}`)} alt={`${paper.name} research diagram`} width="320" height="210" loading="lazy" /></a>}
+  <div class="paper-content">
+    <span class="venue">{paper.venue}</span>
+    <h3><a href={paper.paper}>{compact ? paper.name : `${paper.name}${['Puppet-CNN','∞-Net','HDG-ODE','AGGDN','AC-Diff','AI-Grid'].includes(paper.name) ? ':' : ''} ${paper.title}`}</a></h3>
+    {compact && <p class="paper-subtitle">{paper.title}</p>}
+    <p class="authors">{paper.authors.map((author,i)=><>{i>0 && ', '}{author.startsWith('Yucheng Xing')?<strong>{author}</strong>:author}</>)}</p>
+    {!compact && paper.description && <p class="paper-description">{paper.description}</p>}
+    <div class="paper-links">
+      <a href={paper.paper}>{paper.preprint?'arXiv':'Paper'}</a>
+      {paper.code && <a href={paper.code}>Code</a>}
+      {paper.poster && <a href={paper.poster}>Poster</a>}
+      {paper.bibtex ? <details><summary>BibTeX</summary><pre>{paper.bibtex}</pre></details> : paper.citation && <a href={paper.citation}>Citation</a>}
+    </div>
+  </div>
+</article>
+<style>.paper-text-only{grid-template-columns:1fr!important}</style>

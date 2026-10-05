@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Paper from '../components/Paper.astro';
+import { profile, news } from '../data/profile';
+import { selected } from '../data/publications';
+import { path } from '../lib/paths';
+---
+<Layout>
+  <section class="hero" aria-labelledby="intro-heading">
+    <div class="hero-copy">
+      <p class="eyebrow">Machine learning researcher</p>
+      <h1 id="intro-heading">Yucheng Xing<span class="chinese-name" lang="zh">邢宇程</span></h1>
+      <p class="role">{profile.role}</p>
+      <p class="intro">I study <strong>generative models</strong> and <strong>neural dynamics</strong>, with a focus on making learning and inference more efficient and adaptive.</p>
+      <p class="bio">I received my Ph.D. in Electrical Engineering from Stony Brook University in 2026, advised by <a href="https://www.ece.stonybrook.edu/~xwang/">Prof. Xin Wang</a>. My work spans diffusion models, neural differential equations, and adaptive neural architectures.</p>
+      <div class="social-links" aria-label="Contact and profiles"><a href={`mailto:${profile.email}`}>Email</a><a href={profile.scholar}>Google Scholar</a><a href={profile.github}>GitHub</a><a href={profile.linkedin}>LinkedIn</a><a href={profile.cv}>CV</a></div>
+    </div>
+    <figure class="portrait"><img src={path('images/portrait.jpg')} alt="Yucheng Xing outdoors" width="244" height="300" fetchpriority="high" /><figcaption>Stony Brook, New York</figcaption></figure>
+  </section>
+  <div class="focus-strip" aria-label="Research areas">
+    <div class="focus-item"><a href={path('research/#generative')}>Efficient Generative AI</a><span>Diffusion · Conditional generation</span></div>
+    <div class="focus-item"><a href={path('research/#continuous')}>Continuous-Time Modeling</a><span>Neural ODEs / SDEs · Graph dynamics</span></div>
+    <div class="focus-item"><a href={path('research/#adaptive')}>Adaptive Architectures</a><span>Input-adaptive computation</span></div>
+  </div>
+  <div class="home-content">
+    <section aria-labelledby="selected-heading">
+      <div class="section-heading"><h2 id="selected-heading">Selected research</h2><a class="text-link" href={path('publications/')}>All publications</a></div>
+      <div class="paper-list">{selected.map(paper=><Paper paper={paper} compact />)}</div>
+    </section>
+    <aside class="sidebar">
+      <section aria-labelledby="news-heading"><h2 id="news-heading">News</h2><ol class="news-list">{news.map(item=><li><time datetime={item.iso}>{item.date}</time><p>{item.href ? <a href={item.href}>{item.text}</a> : item.text}</p></li>)}</ol></section>
+      <section aria-labelledby="education-heading"><h2 id="education-heading">Education</h2><div class="education-item"><span class="degree">Ph.D. · Electrical Engineering</span><p>Stony Brook University<br />2026</p></div><div class="education-item"><span class="degree">M.S. · Electrical Engineering</span><p>Stony Brook University<br />2021</p></div><div class="education-item"><span class="degree">B.S. · Computer Science</span><p>Shanghai Jiao Tong University<br />IEEE Honor Class · 2017</p></div></section>
+    </aside>
+  </div>
+  <section class="service" aria-labelledby="service-heading"><h2 id="service-heading">Professional service</h2><p>I serve as a reviewer for conferences and journals including CVPR, ICCV, NeurIPS, ICML, ICLR, AAAI, and IEEE TPAMI. <a href="https://yuchengxing.me/works/services/">Full service record</a></p></section>
+</Layout>
