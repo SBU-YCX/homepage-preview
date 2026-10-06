@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedWork from '../components/RelatedWork.astro';
 import { path } from '../lib/paths';
 ---
 <Layout title="Research — Yucheng Xing" active="research">
@@ -7,17 +8,17 @@ import { path } from '../lib/paths';
   <div class="research-list">
     <section class="research-section" id="generative">
       <span class="research-number" aria-hidden="true">01</span>
-      <div><h2>Efficient generative AI</h2><p>I investigate how to control the computation used by diffusion models while retaining useful generative structure. My work explores input-adaptive generation, structured diffusion processes, and conditional image restoration.</p><p>Applications include image generation, rain removal, and forecasting wildfire risk over multiple future horizons.</p><ul class="related"><li><a href="https://arxiv.org/abs/2411.15199">Input-Adaptive Generative Dynamics in Diffusion Models</a></li><li><a href="https://arxiv.org/abs/2603.09054">Spectral-Structured Diffusion for Single-Image Rain Removal</a></li><li><a href="https://arxiv.org/abs/2603.07361">N-Tree Diffusion for Long-Horizon Wildfire Risk Forecasting</a></li></ul></div>
+      <div><h2>Efficient generative AI</h2><p>I investigate how to control the computation used by diffusion models while retaining useful generative structure. My work explores input-adaptive generation, structured diffusion processes, and conditional image restoration.</p><p>Applications include image generation, rain removal, and forecasting wildfire risk over multiple future horizons.</p><RelatedWork works={[{id:'ac-diff',name:'AC-Diff',venue:'arXiv · 2024'},{id:'spectral-diffusion',name:'Spectral Diffusion',venue:'arXiv · 2026'},{id:'ntree-diffusion',name:'N-Tree Diffusion',venue:'arXiv · 2026'}]} /></div>
       <aside class="research-note"><span class="eyebrow">Current questions</span><p>How much computation does each input need?</p><p>How can the structure of a task inform the generation process?</p></aside>
     </section>
     <section class="research-section" id="adaptive">
       <span class="research-number" aria-hidden="true">02</span>
-      <div><h2>Adaptive neural architectures</h2><p>I study architectures that adjust computation to the input. Puppet-CNN represents convolutional parameters as a continuous dynamical system, generating layer parameters along a learned trajectory.</p><p>This perspective connects compact model storage with flexible, input-adaptive computation.</p><ul class="related"><li><a href={path('publications/#puppet-cnn')}>Puppet-CNN · ECCV 2026</a></li></ul></div>
+      <div><h2>Adaptive neural architectures</h2><p>I study architectures that adjust computation to the input. Puppet-CNN represents convolutional parameters as a continuous dynamical system, generating layer parameters along a learned trajectory.</p><p>This perspective connects compact model storage with flexible, input-adaptive computation.</p><RelatedWork works={[{id:'puppet-cnn',name:'Puppet-CNN',venue:'ECCV · 2026'}]} /></div>
       <figure class="research-figure"><img src={path('images/puppet-cnn.png')} alt="Puppet-CNN parameter flow and adaptive convolutional architecture" width="320" height="220" loading="lazy"/><figcaption>Puppet-CNN: continuous parameter dynamics.</figcaption></figure>
     </section>
     <section class="research-section" id="continuous">
       <span class="research-number" aria-hidden="true">03</span>
-      <div><h2>Continuous-time neural modeling</h2><p>I use neural differential equations to model motion and graph time series in continuous time. These models provide a natural way to work with irregular observations and evolving relationships.</p><p>My work includes hierarchical human pose forecasting, stochastic prediction on graphs, and unsupervised online denoising.</p><ul class="related"><li><a href={path('publications/#hdg-ode')}>HDG-ODE · ICCV 2023</a></li><li><a href={path('publications/#aggdn')}>AGGDN · ICONIP 2023</a></li><li><a href={path('publications/#infinity-net')}>∞-Net · ICONIP 2024</a></li></ul></div>
+      <div><h2>Continuous-time neural modeling</h2><p>I use neural differential equations to model motion and graph time series in continuous time. These models provide a natural way to work with irregular observations and evolving relationships.</p><p>My work includes hierarchical human pose forecasting, stochastic prediction on graphs, and unsupervised online denoising.</p><RelatedWork works={[{id:'hdg-ode',name:'HDG-ODE',venue:'ICCV · 2023'},{id:'aggdn',name:'AGGDN',venue:'ICONIP · 2023'},{id:'infinity-net',name:'∞-Net',venue:'ICONIP · 2024'}]} /></div>
       <figure class="research-figure"><img src={path('images/hdg-ode.png')} alt="Hierarchical graph ODE framework for human pose forecasting" width="320" height="200" loading="lazy"/><figcaption>HDG-ODE: hierarchical dynamics for human motion.</figcaption></figure>
     </section>
   </div>

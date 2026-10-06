@@ -27,7 +27,7 @@ export const publications: Publication[] = [
   {
     id: 'evolved-differential', name: 'Evolved Differential Model', title: 'for Sporadic Graph Time-Series Prediction',
     authors: ['Yucheng Xing', 'Jacqueline Wu', 'Yingru Liu', 'Xuewen Yang', 'Xin Wang'],
-    venue: 'Intelligent and Converged Networks', year: 2024, image: 'aggdn.png',
+    venue: 'Intelligent and Converged Networks', year: 2024,
     paper: 'https://ieeexplore.ieee.org/document/10706763',
   },
   {
@@ -52,7 +52,7 @@ export const publications: Publication[] = [
   {
     id: 'stochastic-networks', name: 'Continuous-Time Stochastic Differential Networks', title: 'for Sporadic Time Series Modeling',
     authors: ['Yingru Liu', 'Yucheng Xing', 'Xuewen Yang', 'Xin Wang', 'Jing Shi', 'Di Jin', 'Zhaoyue Chen', 'Jacqueline Wu'],
-    venue: 'ICONIP 2021', year: 2021, image: 'stochastic-networks.png',
+    venue: 'ICONIP 2021', year: 2021,
     paper: 'https://link.springer.com/chapter/10.1007/978-3-030-92307-5_40',
     citation: 'https://link.springer.com/chapter/10.1007/978-3-030-92307-5_40#citeas',
   },
@@ -66,7 +66,7 @@ export const publications: Publication[] = [
   {
     id: 'ai-grid', name: 'AI-Grid', title: 'AI-Enabled, Smart Programmable Microgrids',
     authors: ['Peng Zhang', 'Yifan Zhou', 'Scott A. Smolka', 'Scott D. Stoller', 'Xin Wang', 'Rong Zhao', 'Tianyun Ling', 'Yucheng Xing', 'Shouvik Roy', 'Amol Damare'],
-    venue: 'Microgrids: Theory and Practice · Book chapter', year: 2024,
+    venue: 'Microgrids: Theory and Practice', year: 2024,
     paper: 'https://onlinelibrary.wiley.com/doi/10.1002/9781119890881.ch2',
     citation: 'https://onlinelibrary.wiley.com/action/showCitFormats?doi=10.1002%2F9781119890881.ch2',
   },

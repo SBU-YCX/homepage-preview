@@ -2,8 +2,10 @@
 import '../styles/global.css';
 import { path } from '../lib/paths';
 import { profile } from '../data/profile';
-const { title = 'Yucheng Xing — Machine Learning Researcher', description = 'Yucheng Xing is a researcher working on efficient generative AI, continuous-time neural modeling, and adaptive neural architectures.', active = 'home' } = Astro.props;
-const nav = [{label:'Home',url:path(),key:'home'},{label:'Research',url:path('research/'),key:'research'},{label:'Publications',url:path('publications/'),key:'publications'},{label:'CV',url:'https://yuchengxing.me/cv/',key:'cv'}];
+import { appearance } from '../data/appearance';
+const { title = 'Yucheng Xing — Machine Learning Researcher', description = 'Yucheng Xing is a researcher working on efficient generative AI, continuous-time neural modeling, and adaptive neural architectures.', active = 'home', welcome = false } = Astro.props;
+const nav = [{label:'Home',url:path('home/'),key:'home'},{label:'Research',url:path('research/'),key:'research'},{label:'Publications',url:path('publications/'),key:'publications'},{label:'Service',url:path('service/'),key:'service'},{label:'CV',url:profile.cv,key:'cv'}];
+const photoConfig = { ...appearance, home: path('home/'), welcome: path(), photos: appearance.photos.map(photo => ({...photo, url:path(`images/photography/${photo.file}`)})) };
 ---
 <!doctype html>
 <html lang="en">
@@ -18,12 +20,15 @@ const nav = [{label:'Home',url:path(),key:'home'},{label:'Research',url:path('re
     <meta property="og:type" content="website" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href={path('favicon.svg')} />
+    <style is:inline set:html={`@font-face{font-family:"YX Chinese Serif";src:url("${path('fonts/name-serif.ttf')}") format("truetype");font-style:normal;font-weight:400;font-display:swap;unicode-range:U+90A2,U+5B87,U+7A0B;}`} />
   </head>
-  <body>
+  <body class:list={{'welcome-page': welcome}} data-page={welcome ? 'welcome' : active} style={`--photo-opacity:${appearance.backgroundOpacity}`}>
+    {!welcome && <div class="site-backdrop" aria-hidden="true"><img id="site-background-photo" src={photoConfig.photos[0].url} alt="" decoding="async" /></div>}
+    {welcome ? <slot /> : <>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="wordmark" href={path()} aria-label="Yucheng Xing home"><span class="monogram" aria-hidden="true">YX</span>Yucheng Xing</a>
+        <a class="wordmark" href={path('home/')} aria-label="Yucheng Xing home"><span class="monogram" aria-hidden="true">YX</span>Yucheng Xing</a>
         <nav class="primary-nav" aria-label="Main navigation">
           {nav.map(item => <a href={item.url} aria-current={active===item.key?'page':undefined}>{item.label}</a>)}
         </nav>
@@ -33,8 +38,11 @@ const nav = [{label:'Home',url:path(),key:'home'},{label:'Research',url:path('re
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <span>© 2026 Yucheng Xing</span>
-        <div class="footer-links"><a href={`mailto:${profile.email}`}>Email</a><a href={profile.github}>GitHub</a><span>Updated October 2026</span></div>
+        <div class="footer-links"><span class="email-display">{profile.emailDisplay}</span><a href={path('?welcome=1')}>Photography</a><a href={profile.github}>GitHub</a></div>
       </div>
     </footer>
+    </>}
+    <script id="site-photo-config" type="application/json" is:inline set:html={JSON.stringify(photoConfig).replace(/</g, '\\u003c')} />
+    <script is:inline src={path('scripts/site.js')} defer></script>
   </body>
 </html>
