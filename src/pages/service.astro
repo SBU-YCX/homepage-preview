@@ -4,21 +4,71 @@ import { conferenceService, journalService, secondaryService, teaching } from '.
 const groups = [
   { id: 'conferences', title: 'Conferences', role: 'Reviewer', items: conferenceService },
   { id: 'journals', title: 'Journals', role: 'Reviewer', items: journalService },
-  { id: 'secondary-review', title: 'Secondary Review', role: 'Secondary reviewer', items: secondaryService },
-  { id: 'teaching', title: 'Teaching', role: 'Teaching assistant · Stony Brook University', items: teaching },
+  {
+    id: 'secondary-review',
+    title: 'Secondary Review',
+    role: 'Secondary reviewer',
+    items: secondaryService,
+  },
+  {
+    id: 'teaching',
+    title: 'Teaching',
+    role: 'Teaching assistant · Stony Brook University',
+    items: teaching,
+  },
 ];
 ---
-<Layout title="Professional Service — Yucheng Xing" active="service">
-  <header class="page-intro"><p class="eyebrow">Academic community</p><h1>Professional Service</h1><p>Peer review and teaching in machine learning, computer vision, and engineering.</p></header>
+
+<Layout
+  title="Professional Service — Yucheng Xing"
+  active="service"
+>
+  <header class="page-intro">
+    <p class="eyebrow">Academic community</p>
+    <h1>Professional Service</h1>
+    <p>Peer review and teaching in machine learning, computer vision, and engineering.</p>
+  </header>
   <div class="service-page">
-    {groups.map((group, index) => <section class="service-group" aria-labelledby={group.id}>
-      <div class="service-group-heading"><span class="eyebrow">{String(index + 1).padStart(2, '0')}</span><h2 id={group.id}>{group.title}</h2><p class="service-group-role">{group.role}</p></div>
-      <ul class="service-list">{group.items.map(item => <li><div><h3>{item.short}</h3>{item.name !== item.short && <p>{item.name}</p>}</div>{item.years && <span class="service-role">{item.years}</span>}</li>)}</ul>
-    </section>)}
+    {groups.map((group, index) => (
+      <section
+        class="service-group"
+        aria-labelledby={group.id}
+      >
+        <div class="service-group-heading">
+          <span class="eyebrow">{String(index + 1).padStart(2, '0')}</span>
+          <h2 id={group.id}>{group.title}</h2>
+          <p class="service-group-role">{group.role}</p>
+        </div>
+        <ul class="service-list">
+          {group.items.map((item) => (
+            <li>
+              <div>
+                <h3>{item.short}</h3>
+                {item.name !== item.short && <p>{item.name}</p>}
+              </div>
+              {item.years && <span class="service-role">{item.years}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
 </Layout>
 
 <style>
-  .service-group-role { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 13px 0 0; }
-  @media (max-width: 720px) { .service-group-heading { flex-wrap: wrap; } .service-group-role { flex-basis: 100%; margin-top: -8px; } }
+  .service-group-role {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 13px 0 0;
+  }
+  @media (max-width: 720px) {
+    .service-group-heading {
+      flex-wrap: wrap;
+    }
+    .service-group-role {
+      flex-basis: 100%;
+      margin-top: -8px;
+    }
+  }
 </style>

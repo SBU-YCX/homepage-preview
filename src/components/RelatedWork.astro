@@ -1,11 +1,27 @@
 ---
 import { path } from '../lib/paths';
-interface Props { works: { id: string; name: string; venue: string }[]; }
+interface Props {
+  works: { id: string; name: string; venue: string }[];
+}
 const { works } = Astro.props;
 ---
+
 <div class="related-work">
   <p class="related-heading">Related work</p>
   <ul class="related">
-    {works.map(work => <li><a href={path(`publications/#${work.id}`)}><span class="related-name">{work.name}</span><span class="related-venue">{work.venue}</span><span class="related-arrow" aria-hidden="true">↗</span></a></li>)}
+    {works.map((work) => (
+      <li>
+        <a href={path(`publications/#${work.id}`)}>
+          <span class="related-name">{work.name}</span>
+          <span class="related-venue">{work.venue}</span>
+          <span
+            class="related-arrow"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </a>
+      </li>
+    ))}
   </ul>
 </div>

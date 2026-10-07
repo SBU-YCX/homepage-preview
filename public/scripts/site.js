@@ -1,9 +1,19 @@
 (() => {
   const memory = { photo: null, entered: false };
   let cleanup = () => {};
-  const read = key => { try { return sessionStorage.getItem(`yx-${key}`); } catch { return null; } };
-  const write = (key, value) => { try { sessionStorage.setItem(`yx-${key}`, value); } catch {} };
-  const asset = url => window.homepagePreviewAsset ? window.homepagePreviewAsset(url) : url;
+  const read = (key) => {
+    try {
+      return sessionStorage.getItem(`yx-${key}`);
+    } catch {
+      return null;
+    }
+  };
+  const write = (key, value) => {
+    try {
+      sessionStorage.setItem(`yx-${key}`, value);
+    } catch {}
+  };
+  const asset = (url) => (window.homepagePreviewAsset ? window.homepagePreviewAsset(url) : url);
   const navigate = (url, replace = false) => {
     if (window.homepagePreviewNavigate) window.homepagePreviewNavigate(url, replace);
     else if (replace) location.replace(url);
@@ -15,11 +25,15 @@
     if (!configElement) return;
     const config = JSON.parse(configElement.textContent);
     const photos = config.photos;
-    const current = photos.find(p => p.id === (memory.photo || read('photo'))) || photos[0];
+    const current = photos.find((p) => p.id === (memory.photo || read('photo'))) || photos[0];
     const controller = new AbortController();
     let interval;
-    cleanup = () => { controller.abort(); clearInterval(interval); };
-    const listen = (node, event, action) => node?.addEventListener(event, action, { signal: controller.signal });
+    cleanup = () => {
+      controller.abort();
+      clearInterval(interval);
+    };
+    const listen = (node, event, action) =>
+      node?.addEventListener(event, action, { signal: controller.signal });
     const setPosition = (image, photo) => {
       image.style.setProperty('--photo-position', photo.position);
       image.style.setProperty('--photo-mobile-position', photo.mobilePosition);
@@ -38,27 +52,35 @@
     let index = photos.indexOf(current);
     let active = 0;
     let request = 0;
-    const layers = [document.getElementById('welcome-photo-a'), document.getElementById('welcome-photo-b')];
+    const layers = [
+      document.getElementById('welcome-photo-a'),
+      document.getElementById('welcome-photo-b'),
+    ];
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let paused = reduceMotion.matches;
     const pauseButton = document.getElementById('photo-pause');
     const updateLabels = () => {
       document.getElementById('photo-caption').textContent = photos[index].label;
-      document.getElementById('photo-counter').textContent = `${String(index + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
+      document.getElementById('photo-counter').textContent =
+        `${String(index + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
       pauseButton.textContent = paused ? 'Play' : 'Pause';
       pauseButton.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
     };
     layers[0].src = asset(current.url);
     setPosition(layers[0], current);
     updateLabels();
-    const show = async nextIndex => {
+    const show = async (nextIndex) => {
       const token = ++request;
       const next = (nextIndex + photos.length) % photos.length;
       const photo = photos[next];
       const url = asset(photo.url);
       const loaded = new Image();
       loaded.src = url;
-      try { await loaded.decode(); } catch { return; }
+      try {
+        await loaded.decode();
+      } catch {
+        return;
+      }
       if (controller.signal.aborted || token !== request) return;
       const nextLayer = 1 - active;
       layers[nextLayer].src = url;
@@ -69,11 +91,27 @@
       index = next;
       updateLabels();
     };
-    listen(document.getElementById('photo-next'), 'click', () => { paused = true; updateLabels(); show(index + 1); });
-    listen(document.getElementById('photo-prev'), 'click', () => { paused = true; updateLabels(); show(index - 1); });
-    listen(pauseButton, 'click', () => { paused = !paused; updateLabels(); });
-    listen(reduceMotion, 'change', event => { if (event.matches) { paused = true; updateLabels(); } });
-    listen(document.getElementById('enter-home'), 'click', event => {
+    listen(document.getElementById('photo-next'), 'click', () => {
+      paused = true;
+      updateLabels();
+      show(index + 1);
+    });
+    listen(document.getElementById('photo-prev'), 'click', () => {
+      paused = true;
+      updateLabels();
+      show(index - 1);
+    });
+    listen(pauseButton, 'click', () => {
+      paused = !paused;
+      updateLabels();
+    });
+    listen(reduceMotion, 'change', (event) => {
+      if (event.matches) {
+        paused = true;
+        updateLabels();
+      }
+    });
+    listen(document.getElementById('enter-home'), 'click', (event) => {
       event.preventDefault();
       memory.photo = photos[index].id;
       memory.entered = true;
@@ -86,6 +124,7 @@
     }, config.slideshowInterval);
   }
   window.initHomepage = init;
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   else init();
 })();

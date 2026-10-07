@@ -1,23 +1,116 @@
 ---
 import type { Publication } from '../data/publications';
 import { path } from '../lib/paths';
-interface Props { paper: Publication; compact?: boolean; }
+interface Props {
+  paper: Publication;
+  compact?: boolean;
+}
 const { paper, compact = false } = Astro.props;
-const publicationType = paper.preprint ? 'Preprint' : paper.id === 'ai-grid' ? 'Book chapter' : paper.id === 'evolved-differential' ? 'Journal' : 'Conference';
+
+// 部分简称和完整标题之间需要冒号。
+const namesWithColon = ['Puppet-CNN', '∞-Net', 'HDG-ODE', 'AGGDN', 'AC-Diff', 'AI-Grid'];
+const separator = namesWithColon.includes(paper.name) ? ': ' : ' ';
+const heading = compact ? paper.name : `${paper.name}${separator}${paper.title}`;
+
+const publicationType = paper.preprint
+  ? 'Preprint'
+  : paper.id === 'ai-grid'
+    ? 'Book chapter'
+    : paper.id === 'evolved-differential'
+      ? 'Journal'
+      : 'Conference';
 ---
-<article class:list={['paper', {'paper-text-only': !paper.image}]} id={paper.id}>
-  {paper.image && <a class="paper-figure" href={paper.paper} aria-label={`Read ${paper.name}`}><img src={path(`images/${paper.image}`)} alt={`${paper.name} research diagram`} width="320" height="210" loading="lazy" /></a>}
+
+<article
+  class:list={['paper', { 'paper-text-only': !paper.image }]}
+  id={paper.id}
+>
+  <!-- 有配图时显示；没有图片的论文只显示文字。 -->
+  {paper.image && (
+    <a
+      class="paper-figure"
+      href={paper.paper}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Read ${paper.name}`}
+    >
+      <img
+        src={path(`images/${paper.image}`)}
+        alt={`${paper.name} research diagram`}
+        width="320"
+        height="210"
+        loading="lazy"
+      />
+    </a>
+  )}
   <div class="paper-content">
-    <div class="paper-meta">{!compact && <span class="publication-type">{publicationType}</span>}<span class="venue">{paper.venue}</span></div>
-    <h3><a href={paper.paper}>{compact ? paper.name : `${paper.name}${['Puppet-CNN','∞-Net','HDG-ODE','AGGDN','AC-Diff','AI-Grid'].includes(paper.name) ? ':' : ''} ${paper.title}`}</a></h3>
+    <div class="paper-meta">
+      {!compact && <span class="publication-type">{publicationType}</span>}
+      <span class="venue">{paper.venue}</span>
+    </div>
+    <!-- 论文标题链接与下方 Paper 按钮均使用 publications.ts 中的 paper 字段。 -->
+    <h3>
+      <a
+        href={paper.paper}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {heading}
+      </a>
+    </h3>
     {compact && <p class="paper-subtitle">{paper.title}</p>}
-    <p class="authors">{paper.authors.map((author,i)=><>{i>0 && ', '}{author.startsWith('Yucheng Xing')?<strong>{author}</strong>:author}</>)}</p>
+    <p class="authors">
+      {paper.authors.map((author, i) => (
+        <>
+          {i > 0 && ', '}
+          {author.startsWith('Yucheng Xing') ? <strong>{author}</strong> : author}
+        </>
+      ))}
+    </p>
     {!compact && paper.description && <p class="paper-description">{paper.description}</p>}
+    <!-- 外站资源在新标签页打开；BibTeX 在当前页面内展开。 -->
     <div class="paper-links">
-      <a href={paper.paper}>{paper.preprint?'arXiv':'Paper'}</a>
-      {paper.code && <a href={paper.code}>Code</a>}
-      {paper.poster && <a href={paper.poster}>Poster</a>}
-      {paper.bibtex ? <details><summary>BibTeX</summary><pre>{paper.bibtex}</pre></details> : paper.citation && <a href={paper.citation}>Citation</a>}
+      <a
+        href={paper.paper}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {paper.preprint ? 'arXiv' : 'Paper'}
+      </a>
+      {paper.code && (
+        <a
+          href={paper.code}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Code
+        </a>
+      )}
+      {paper.poster && (
+        <a
+          href={paper.poster}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Poster
+        </a>
+      )}
+      {paper.bibtex ? (
+        <details>
+          <summary>BibTeX</summary>
+          <pre>{paper.bibtex}</pre>
+        </details>
+      ) : (
+        paper.citation && (
+          <a
+            href={paper.citation}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Citation
+          </a>
+        )
+      )}
     </div>
   </div>
 </article>

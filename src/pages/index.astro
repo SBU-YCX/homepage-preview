@@ -4,27 +4,97 @@ import { appearance } from '../data/appearance';
 import { path } from '../lib/paths';
 const first = appearance.photos[0];
 ---
-<Layout welcome title="Welcome — Yucheng Xing">
-  <main class="welcome-scene" aria-labelledby="welcome-heading">
-    <div class="welcome-photographs" aria-hidden="true">
-      <img class="welcome-photo is-active" id="welcome-photo-a" src={path(`images/photography/${first.file}`)} alt="" fetchpriority="high" style={`--photo-position:${first.position};--photo-mobile-position:${first.mobilePosition}`} />
-      <img class="welcome-photo" id="welcome-photo-b" alt="" />
+
+<Layout
+  welcome
+  title="Welcome — Yucheng Xing"
+>
+  <main
+    class="welcome-scene"
+    aria-labelledby="welcome-heading"
+  >
+    <div
+      class="welcome-photographs"
+      aria-hidden="true"
+    >
+      <img
+        class="welcome-photo is-active"
+        id="welcome-photo-a"
+        src={path(`images/photography/${first.file}`)}
+        alt=""
+        fetchpriority="high"
+        style={`--photo-position:${first.position};--photo-mobile-position:${first.mobilePosition}`}
+      />
+      <img
+        class="welcome-photo"
+        id="welcome-photo-b"
+        alt=""
+      />
     </div>
-    <div class="welcome-shade" aria-hidden="true"></div>
-    <header class="welcome-header"><span class="welcome-wordmark">YX</span><span>Research & moments in between</span></header>
+    <div
+      class="welcome-shade"
+      aria-hidden="true"
+    ></div>
+    <header class="welcome-header">
+      <span class="welcome-wordmark">YX</span>
+      <span>Research & moments in between</span>
+    </header>
     <div class="welcome-copy">
       <p class="welcome-eyebrow">Machine learning researcher</p>
-      <h1 id="welcome-heading">Yucheng Xing<span lang="zh" class="welcome-chinese">邢宇程</span></h1>
+      <h1 id="welcome-heading">
+        Yucheng Xing
+        <span
+          lang="zh"
+          class="welcome-chinese"
+        >
+          邢宇程
+        </span>
+      </h1>
       <p class="welcome-description">Generative models. Neural dynamics. A little curiosity.</p>
-      <a class="enter-home" id="enter-home" href={path('home/')}>Enter homepage <span aria-hidden="true">↗</span></a>
+      <a
+        class="enter-home"
+        id="enter-home"
+        href={path('home/')}
+      >
+        Enter homepage <span aria-hidden="true">↗</span>
+      </a>
     </div>
     <footer class="welcome-footer">
-      <div class="photo-credit"><span id="photo-caption">{first.label}</span><small>Photographs by Yucheng Xing</small></div>
-      <div class="slideshow-controls" aria-label="Photo slideshow">
-        <span class="photo-counter" id="photo-counter">01 / 05</span>
-        <button type="button" id="photo-prev" aria-label="Previous photograph">←</button>
-        <button type="button" id="photo-pause" aria-label="Pause slideshow">Pause</button>
-        <button type="button" id="photo-next" aria-label="Next photograph">→</button>
+      <div class="photo-credit">
+        <span id="photo-caption">{first.label}</span>
+        <small>Photographs by Yucheng Xing</small>
+      </div>
+      <div
+        class="slideshow-controls"
+        aria-label="Photo slideshow"
+      >
+        <span
+          class="photo-counter"
+          id="photo-counter"
+        >
+          01 / 05
+        </span>
+        <button
+          type="button"
+          id="photo-prev"
+          aria-label="Previous photograph"
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          id="photo-pause"
+          aria-label="Pause slideshow"
+        >
+          Pause
+        </button>
+        <button
+          type="button"
+          id="photo-next"
+          aria-label="Next photograph"
+        >
+          →
+        </button>
       </div>
     </footer>
   </main>

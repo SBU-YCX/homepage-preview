@@ -4,6 +4,36 @@ Astro 7 static website with Welcome, Home, Research, Publications, Service, and
 a custom 404 page. The design keeps the original minimal academic layout and
 uses the owner's five landscape photographs. All images are in `public/images`.
 
+## 从哪里改内容
+
+请编辑 `src/` 里的源文件。`dist/` 里的 HTML 是自动生成的发布文件；
+其中的 HTML 和 CSS 会被压缩，下一次构建也会覆盖手动修改。
+单文件 `homepage-preview.html` 用来预览，不是日常维护入口。
+
+| 要修改的内容 | 源文件 |
+| --- | --- |
+| 论文名称、作者、会议/期刊、年份、Paper/Code/Poster 链接、BibTeX | `src/data/publications.ts` |
+| 每篇论文的显示格式、链接按钮 | `src/components/Paper.astro` |
+| Publication 页面标题、年份分组结构 | `src/pages/publications.astro` |
+| Google Scholar、GitHub、LinkedIn、CV、News | `src/data/profile.ts` |
+| 首页自我介绍和 Education | `src/pages/home.astro` |
+| 研究方向文字 | `src/pages/research.astro` |
+| Service 记录 | `src/data/service.ts` |
+| 颜色、字体、间距、边框、页面布局 | `src/styles/global.css` |
+| 欢迎照片、轮播速度、背景浓淡 | `src/data/appearance.ts` |
+
+论文文件中，每一个 `{ ... }` 区块就是一篇论文，每个字段单独一行。
+修改引号中的内容即可；在相邻字段之间保留逗号。`id` 用于站内跳转，
+一般保留原值。`bibtex` 使用反引号包住多行文字，可以直接阅读和编辑。
+当前 `paper` 字段同时供论文标题和 Paper / arXiv 按钮使用。
+
+这次功能修改仅为外站链接在新标签页打开；论文内容、PDF 地址、引用内容和
+录用率仍由你自己编辑。站内导航和年份锚点在当前标签页跳转。
+
+可以直接在 GitHub 的文件页面点击铅笔按钮编辑并提交；或者在 Windows 中
+编辑源文件后按原目录上传。提交后，到 **Actions → Publish homepage
+(manual only) → Run workflow** 运行一次，网页才会更新。
+
 ## Run locally on Windows or a server
 
 Use Node.js 24 and npm.
@@ -53,23 +83,23 @@ JavaScript, the first photograph and entry link still work.
 Edit `src/data/appearance.ts` to change the photo order, crops, interval, or
 background opacity. The original photos are in `public/images/photography/`.
 
-## Current phase: private development
+## Current phase: GitHub Pages preview
 
-Keep `SBU-YCX/homepage-preview` private while building and reviewing the design.
-Uploading or pushing this project does not publish a website: the included
-deployment workflow has only a manual trigger. Preview the site locally with
-`npm run dev`, or open the separately supplied `homepage-preview.html` file.
+`SBU-YCX/homepage-preview` is now public and the preview uses
+https://sbu-ycx.github.io/homepage-preview/. The included deployment workflow
+has only a manual trigger: uploading or pushing edits does not update the site
+until **Publish homepage (manual only)** is run again. You can also preview
+locally with `npm run dev` or the separate `homepage-preview.html` file.
 
 When uploading through GitHub's web interface, unzip the source archive first
 and preserve the project directory structure. Put `package.json`, `src/`, and
 `public/` at the repository root. GitHub does not unpack a ZIP merely because
 it was uploaded. A normal git push from the server also preserves directories.
 
-## Future publication on GitHub Pages
+## GitHub Pages deployment
 
-Do this only after explicitly deciding to publish. The current repository's
-Pages settings require either a supported paid plan or public visibility.
-Do not change repository visibility just to complete the development setup.
+The dedicated preview repository is already configured for GitHub Pages.
+The setup and manual publishing steps are listed below for reference.
 
 1. Use only the new, dedicated homepage repository. A project repository such
    as `homepage-preview` keeps this preview separate from any existing site.

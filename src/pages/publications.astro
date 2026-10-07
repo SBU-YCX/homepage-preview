@@ -3,15 +3,68 @@ import Layout from '../layouts/Layout.astro';
 import Paper from '../components/Paper.astro';
 import { publications, preprints } from '../data/publications';
 import { profile } from '../data/profile';
-const years = [...new Set(publications.map(p=>p.year))].sort((a,b)=>b-a);
+const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
 ---
-<Layout title="Publications — Yucheng Xing" active="publications">
-  <header class="page-intro"><p class="eyebrow">Research output</p><h1>Publications</h1><p>Conference papers, journal articles, and preprints.<br />Also on <a href={profile.scholar}>Google Scholar</a>.</p></header>
+
+<Layout
+  title="Publications — Yucheng Xing"
+  active="publications"
+>
+  <header class="page-intro">
+    <p class="eyebrow">Research output</p>
+    <h1>Publications</h1>
+    <p>
+      Conference papers, journal articles, and preprints.
+      <br />
+      Also on{' '}
+      <a
+        href={profile.scholar}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google Scholar
+      </a>
+      .
+    </p>
+  </header>
   <div class="publication-layout">
-    <nav class="year-nav" aria-label="Publication years"><span class="eyebrow">Browse</span>{years.map(year=><a href={`#year-${year}`}>{year}</a>)}<a href="#preprints">Preprints</a></nav>
+    <nav
+      class="year-nav"
+      aria-label="Publication years"
+    >
+      <span class="eyebrow">Browse</span>
+      {years.map((year) => (
+        <a href={`#year-${year}`}>{year}</a>
+      ))}
+      <a href="#preprints">Preprints</a>
+    </nav>
     <div>
-      {years.map(year=><section class="year-section" id={`year-${year}`}><h2>{year}</h2><div class="paper-list">{publications.filter(p=>p.year===year).map(paper=><Paper paper={paper}/>)}</div></section>)}
-      <section class="year-section" id="preprints"><h2>Preprints</h2><div class="paper-list">{preprints.map(paper=><Paper paper={paper}/>)}</div></section>
+      {years.map((year) => (
+        <section
+          class="year-section"
+          id={`year-${year}`}
+        >
+          <h2>{year}</h2>
+          <div class="paper-list">
+            {publications
+              .filter((p) => p.year === year)
+              .map((paper) => (
+                <Paper paper={paper} />
+              ))}
+          </div>
+        </section>
+      ))}
+      <section
+        class="year-section"
+        id="preprints"
+      >
+        <h2>Preprints</h2>
+        <div class="paper-list">
+          {preprints.map((paper) => (
+            <Paper paper={paper} />
+          ))}
+        </div>
+      </section>
     </div>
   </div>
 </Layout>
