@@ -69,6 +69,7 @@ const publicationType = paper.preprint
     </p>
     {!compact && paper.description && <p class="paper-description">{paper.description}</p>}
     <!-- 外站资源在新标签页打开；BibTeX 在当前页面内展开。 -->
+    {!paper.preprint && (
     <div class="paper-links">
       <a
         href={paper.paper}
@@ -112,5 +113,6 @@ const publicationType = paper.preprint
         )
       )}
     </div>
+    )}
   </div>
 </article>
