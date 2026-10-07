@@ -31,19 +31,18 @@ export const publications: Publication[] = [
     venue: 'ECCV 2026',
     year: 2026,
     image: 'puppet-cnn.png',
-    description:
-      'Continuous parameter dynamics for compact convolutional networks with input-adaptive computation.',
-    paper: 'https://link.springer.com/chapter/10.1007/978-3-032-37556-8_31',
+    paper: 'https://drive.google.com/file/d/1jg9L6P6L6sWORdaZQ2WfVojQDaW64Swm/view',
     poster: 'https://drive.google.com/file/d/1ZaLAuHhjRIm_JD6oUzaM3spliccsg0Dw/view',
     bibtex: `@inproceedings{xing2026puppet,
   title={Puppet-CNN: Continuous Parameter Dynamics for Input-Adaptive Convolutional Networks},
   author={Xing, Yucheng and Wang, Xin},
-  booktitle={Computer Vision -- ECCV 2026},
-  year={2026},
+  booktitle={European Conference on Computer Vision},
   pages={570--587},
-  doi={10.1007/978-3-032-37556-8_31}
+  year={2026},
+  organization={Springer}
 }`,
   },
+
   {
     id: 'infinity-net',
     name: '∞-Net',
@@ -52,12 +51,19 @@ export const publications: Publication[] = [
     venue: 'ICONIP 2024',
     year: 2024,
     image: 'infinity-net.png',
-    description: 'Online denoising of graph time series without clean training targets.',
-    paper: 'https://link.springer.com/chapter/10.1007/978-981-96-6582-2_8',
+    paper: 'https://drive.google.com/file/d/17LskJVcTY5JOTEW_XhDTnFix2oUO3bTc/view',
     code: 'https://github.com/SBU-YCX/Infinity-Net',
     poster: 'https://drive.google.com/file/d/1amPXWbo6oL84sW6PMXFvpvstubd5sHu8/view',
-    citation: 'https://link.springer.com/chapter/10.1007/978-981-96-6582-2_8#citeas',
+    bibtex: `@inproceedings{xing2024net,
+  title={∞-Net: An Unsupervised Model for Online Graph Time-Series Denoising},
+  author={Xing, Yucheng and Wang, Xin},
+  booktitle={International Conference on Neural Information Processing},
+  pages={111--125},
+  year={2024},
+  organization={Springer}
+}`,
   },
+
   {
     id: 'evolved-differential',
     name: 'Evolved Differential Model',
@@ -65,8 +71,19 @@ export const publications: Publication[] = [
     authors: ['Yucheng Xing', 'Jacqueline Wu', 'Yingru Liu', 'Xuewen Yang', 'Xin Wang'],
     venue: 'Intelligent and Converged Networks',
     year: 2024,
-    paper: 'https://ieeexplore.ieee.org/document/10706763',
+    paper: 'https://drive.google.com/file/d/1oox-MUhPh39X8BdUlLI_3ks_jpdQyEwj/view',
+    bibtex: `@article{xing2024evolved,
+  title={Evolved differential model for sporadic graph time-series prediction},
+  author={Xing, Yucheng and Wu, Jacqueline and Liu, Yingru and Yang, Xuewen and Wang, Xin},
+  journal={Intelligent and Converged Networks},
+  volume={5},
+  number={3},
+  pages={237--247},
+  year={2024},
+  publisher={TUP}
+}`,
   },
+
   {
     id: 'hdg-ode',
     name: 'HDG-ODE',
@@ -75,18 +92,19 @@ export const publications: Publication[] = [
     venue: 'ICCV 2023',
     year: 2023,
     image: 'hdg-ode.png',
-    description: 'Modeling human motion through hierarchical graph dynamics in continuous time.',
-    paper:
-      'https://openaccess.thecvf.com/content/ICCV2023/html/Xing_HDG-ODE_A_Hierarchical_Continuous-Time_Model_for_Human_Pose_Forecasting_ICCV_2023_paper.html',
+    paper: 'https://drive.google.com/file/d/1OvwnWNbpqJJblmRF9eNGytzT8AvUnizG/view',
     code: 'https://github.com/SBU-YCX/HDG-ODE',
     poster: 'https://drive.google.com/file/d/1HpjivRwq_OyM8nLTWAn_JKgdarQ3sPnU/view',
     bibtex: `@inproceedings{xing2023hdg,
-  title={HDG-ODE: A Hierarchical Continuous-Time Model for Human Pose Forecasting},
+  title={HDG-ODE: A hierarchical continuous-time model for human pose forecasting},
   author={Xing, Yucheng and Wang, Xin},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-  year={2023}
+  booktitle={2023 IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages={14654--14666},
+  year={2023},
+  organization={IEEE}
 }`,
   },
+
   {
     id: 'aggdn',
     name: 'AGGDN',
@@ -95,12 +113,19 @@ export const publications: Publication[] = [
     venue: 'ICONIP 2023',
     year: 2023,
     image: 'aggdn.png',
-    description: 'Continuous stochastic modeling for irregular observations on graphs.',
-    paper: 'https://link.springer.com/chapter/10.1007/978-981-99-8079-6_11',
+    paper: 'https://drive.google.com/file/d/1cEpQEgUUr2Mxk0JkXIHnXXXoo5DGtf8t/view',
     code: 'https://github.com/SBU-YCX/AGGDN',
     poster: 'https://drive.google.com/file/d/1C59e3zZ5RO0grj_YElZAxjZeCRXOdrvr/view',
-    citation: 'https://link.springer.com/chapter/10.1007/978-981-99-8079-6_11#citeas',
+    bibtex: `@inproceedings{xing2023aggdn,
+  title={AGGDN: A Continuous Stochastic Predictive Model for Monitoring Sporadic Time Series on Graphs},
+  author={Xing, Yucheng and Wu, Jacqueline and Liu, Yingru and Yang, Xuewen and Wang, Xin},
+  booktitle={International Conference on Neural Information Processing},
+  pages={130--146},
+  year={2023},
+  organization={Springer}
+}`,
   },
+
   {
     id: 'stochastic-networks',
     name: 'Continuous-Time Stochastic Differential Networks',
@@ -117,9 +142,18 @@ export const publications: Publication[] = [
     ],
     venue: 'ICONIP 2021',
     year: 2021,
-    paper: 'https://link.springer.com/chapter/10.1007/978-3-030-92307-5_40',
-    citation: 'https://link.springer.com/chapter/10.1007/978-3-030-92307-5_40#citeas',
+    image: 'stochastic-networks.png', 
+    paper: 'https://drive.google.com/file/d/1Vf3adt8jPn2szaoLkz1d9s1qvU47VGfA/view',
+    bibtex: `@inproceedings{liu2021continuous,
+  title={Continuous-time stochastic differential networks for irregular time series modeling},
+  author={Liu, Yingru and Xing, Yucheng and Yang, Xuewen and Wang, Xin and Shi, Jing and Jin, Di and Chen, Zhaoyue and Wu, Jacqueline},
+  booktitle={International Conference on Neural Information Processing},
+  pages={343--351},
+  year={2021},
+  organization={Springer}
+}`,
   },
+
   {
     id: 'multi-person-pose',
     name: 'Multi-person 3D Pose Estimation',
@@ -136,9 +170,17 @@ export const publications: Publication[] = [
     venue: 'ICONIP 2019',
     year: 2019,
     image: 'multi-person-pose.png',
-    paper: 'https://link.springer.com/chapter/10.1007/978-3-030-36711-4_2',
-    citation: 'https://link.springer.com/chapter/10.1007/978-3-030-36711-4_2#citeas',
+    paper: 'https://drive.google.com/file/d/1ym_l6YToCEosKh06st6HmDer48fde26v/view',
+    bibtex: `@inproceedings{li2019multi,
+  title={Multi-person 3D Pose Estimation from Monocular Image Sequences},
+  author={Li, Ran and Xu, Nayun and Lu, Xutong and Xing, Yucheng and Zhao, Haohua and Niu, Li and Zhang, Liqing},
+  booktitle={International Conference on Neural Information Processing},
+  pages={15--24},
+  year={2019},
+  organization={Springer}
+}`,
   },
+
   {
     id: 'ai-grid',
     name: 'AI-Grid',
@@ -158,8 +200,14 @@ export const publications: Publication[] = [
     venue: 'Microgrids: Theory and Practice',
     year: 2024,
     paper: 'https://onlinelibrary.wiley.com/doi/10.1002/9781119890881.ch2',
-    citation:
-      'https://onlinelibrary.wiley.com/action/showCitFormats?doi=10.1002%2F9781119890881.ch2',
+    bibtex:  `@article{zhang2024ai,
+  title={AI-Grid: AI-Enabled, Smart Programmable Microgrids},
+  author={Zhang, Peng and Zhou, Yifan and Smolka, Scott A and Stoller, Scott D and Wang, Xin and Zhao, Rong and Ling, Tianyun and Xing, Yucheng and Roy, Shouvik and Damare, Amol},
+  journal={Microgrids: Theory and Practice},
+  pages={7--58},
+  year={2024},
+  publisher={Wiley Online Library}
+}`,
   },
 ];
 
@@ -174,6 +222,7 @@ export const preprints: Publication[] = [
     paper: 'https://arxiv.org/abs/2603.09054',
     preprint: true,
   },
+
   {
     id: 'ntree-diffusion',
     name: 'N-Tree Diffusion',
@@ -184,6 +233,7 @@ export const preprints: Publication[] = [
     paper: 'https://arxiv.org/abs/2603.07361',
     preprint: true,
   },
+
   {
     id: 'dancer',
     name: 'DANCER:',
@@ -194,6 +244,7 @@ export const preprints: Publication[] = [
     paper: 'https://arxiv.org/abs/2510.27169',
     preprint: true,
   },
+
   {
     id: 'ac-diff',
     name: 'Input-Adaptive Generative Dynamics',
@@ -205,6 +256,7 @@ export const preprints: Publication[] = [
     paper: 'https://arxiv.org/abs/2411.15199',
     preprint: true,
   },
+
   {
     id: 'mftp',
     name: 'Map-Free Trajectory Prediction',
