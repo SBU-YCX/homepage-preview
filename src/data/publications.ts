@@ -249,8 +249,9 @@ export const preprints: Publication[] = [
     name: 'DANCER:',
     title: 'Dance ANimation via Condition Enhancement and Rendering with diffusion model',
     authors: ['Yucheng Xing*', 'Jinxing Yin*', 'Xiaodong Liu*', 'Xin Wang'],
-    venue: 'arXiv · 2025 · * Equal contribution',
+    venue: 'arXiv · 2025',
     year: 2025,
+    description: '* Equal contribution'
     publicationUrl: 'https://arxiv.org/abs/2510.27169',
     preprint: true,
   },
