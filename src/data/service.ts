@@ -4,13 +4,13 @@ export const conferenceService = [
   {
     short: 'NeurIPS',
     name: 'Conference on Neural Information Processing Systems',
-    years: '2024–-2025',
+    years: '2024–2025',
   },
 
   { 
     short: 'AAAI', 
     name: 'AAAI Conference on Artificial Intelligence', 
-    years: '2026–-2027' 
+    years: '2026–2027' 
   },
 
   { 
@@ -22,13 +22,13 @@ export const conferenceService = [
   {
     short: 'ICLR',
     name: 'International Conference on Learning Representations',
-    years: '2025–-2026',
+    years: '2025–2026',
   },
 
   {
     short: 'AISTATS',
     name: 'International Conference on Artificial Intelligence and Statistics',
-    years: '2025–-2026',
+    years: '2025–2026',
   },
 
   { 
@@ -64,13 +64,13 @@ export const conferenceService = [
   { 
     short: 'ICPR', 
     name: 'International Conference on Pattern Recognition', 
-    years: '2024–-2026' 
+    years: '2024–2026' 
   },
 
   {
     short: 'ICONIP',
     name: 'International Conference on Neural Information Processing',
-    years: '2023–-2026',
+    years: '2023–2026',
   },
 
   {
