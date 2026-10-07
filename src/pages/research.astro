@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RelatedWork from '../components/RelatedWork.astro';
+import { path } from '../lib/paths';
 
 // 顺序与首页一致：Generative → Continuous-Time → Adaptive。
 // 保留下面三个 section 的 id，首页的方向链接会跳到对应位置。
@@ -42,6 +43,21 @@ import RelatedWork from '../components/RelatedWork.astro';
           efficient while preserving output quality and consistency.
         </p>
 
+        <!-- 暂用统一的问题侧栏；以后选好概念图可替换整个 aside。 -->
+        <aside
+          class="research-note"
+          aria-labelledby="generative-questions"
+        >
+          <span
+            class="eyebrow"
+            id="generative-questions"
+          >
+            Key questions
+          </span>
+          <p>How can structure and conditioning guide generation?</p>
+          <p>How can generation quality be maintained with less computation?</p>
+        </aside>
+
         <RelatedWork
           works={[
             {
@@ -63,20 +79,16 @@ import RelatedWork from '../components/RelatedWork.astro';
         />
       </div>
 
-      <!-- 暂用统一的问题侧栏；以后选好概念图可替换整个 aside。 -->
-      <aside
-        class="research-note"
-        aria-labelledby="generative-questions"
-      >
-        <span
-          class="eyebrow"
-          id="generative-questions"
-        >
-          Key questions
-        </span>
-        <p>How can structure and conditioning guide generation?</p>
-        <p>How can generation quality be maintained with less computation?</p>
-      </aside>
+      <figure class="research-figure">
+        <img
+          src={path('images/nt-diffusion.PNG')}
+          alt="generative modeling - nt-diffusion"
+          width="320"
+          height="220"
+          loading="lazy"
+        />
+      </figure>
+
     </section>
 
     <!-- 02：连续时间建模。这里选择以连续动力学为核心的工作。 -->
@@ -100,6 +112,20 @@ import RelatedWork from '../components/RelatedWork.astro';
           interactions among entities, and uncertainty within continuous-time models.
         </p>
 
+          <aside
+          class="research-note"
+          aria-labelledby="continuous-questions"
+        >
+          <span
+            class="eyebrow"
+            id="continuous-questions"
+          >
+            Key questions
+          </span>
+          <p>How can models learn dynamics between irregular observations?</p>
+          <p>How can interactions and uncertainty be represented in continuous time?</p>
+        </aside>
+
         <RelatedWork
           works={[
             {
@@ -112,28 +138,20 @@ import RelatedWork from '../components/RelatedWork.astro';
               name: 'AGGDN',
               venue: 'ICONIP · 2023',
             },
-            {
-              id: 'evolved-differential',
-              name: 'Evolved Differential Model',
-              venue: 'Intelligent and Converged Networks · 2024',
-            },
           ]}
         />
       </div>
 
-      <aside
-        class="research-note"
-        aria-labelledby="continuous-questions"
-      >
-        <span
-          class="eyebrow"
-          id="continuous-questions"
-        >
-          Key questions
-        </span>
-        <p>How can models learn dynamics between irregular observations?</p>
-        <p>How can interactions and uncertainty be represented in continuous time?</p>
-      </aside>
+      <figure class="research-figure">
+        <img
+          src={path('images/aggdn.png')}
+          alt="continuous-time - aggdn"
+          width="320"
+          height="220"
+          loading="lazy"
+        />
+      </figure>
+
     </section>
 
     <!-- 03：自适应网络结构。代表论文数量不需要与其他方向相同。 -->
@@ -157,6 +175,20 @@ import RelatedWork from '../components/RelatedWork.astro';
           performance, parameter storage, and inference cost.
         </p>
 
+          <aside
+          class="research-note"
+          aria-labelledby="adaptive-questions"
+        >
+          <span
+            class="eyebrow"
+            id="adaptive-questions"
+          >
+            Key questions
+          </span>
+          <p>How much computation does each input need?</p>
+          <p>How can compact parameterizations support flexible computation?</p>
+        </aside>
+
         <RelatedWork
           works={[
             {
@@ -173,19 +205,16 @@ import RelatedWork from '../components/RelatedWork.astro';
         />
       </div>
 
-      <aside
-        class="research-note"
-        aria-labelledby="adaptive-questions"
-      >
-        <span
-          class="eyebrow"
-          id="adaptive-questions"
-        >
-          Key questions
-        </span>
-        <p>How much computation does each input need?</p>
-        <p>How can compact parameterizations support flexible computation?</p>
-      </aside>
+      <figure class="research-figure">
+        <img
+          src={path('images/puppet-cnn.png')}
+          alt="adaptive computation - puppet-cnn"
+          width="320"
+          height="220"
+          loading="lazy"
+        />
+      </figure>
+      
     </section>
   </div>
 </Layout>
@@ -209,50 +238,43 @@ import RelatedWork from '../components/RelatedWork.astro';
     overflow-wrap: anywhere;
   }
 
-  /* 三个方向统一使用相同的问题侧栏。 */
+    /* 问题放在简介下面，以较轻的斜体呈现。 */
   .research-note {
-    min-width: 0;
-    padding: 26px;
-    background: var(--wash);
-    border-left: 2px solid var(--accent);
-    align-self: start;
+    margin: 18px 0 0;
+    padding: 0;
+    background: none;
+    border: 0;
   }
 
   .research-note .eyebrow {
     display: block;
-    margin-bottom: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: 8px;
   }
 
   .research-note p {
-    font-family: var(--serif);
-    font-size: 20px;
-    line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 18px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--muted);
+    margin: 0 0 7px;
   }
 
   .research-note p:last-child {
     margin-bottom: 0;
   }
 
-  @media (max-width: 1000px) {
-    .research-note {
-      padding: 22px;
-    }
-
-    .research-note p {
-      font-size: 19px;
-    }
+  /* 没有配图时，让文字使用右侧空出的空间。 */
+  .research-section:not(:has(> .research-figure)) .research-copy {
+    grid-column: 2 / -1;
+    max-width: 760px;
   }
 
-  @media (max-width: 720px) {
-    .research-note {
-      grid-column: 2;
-      padding: 20px;
-    }
-
-    .research-note p {
-      font-size: 18px;
-    }
+  .research-section > .research-figure {
+    align-self: start;
   }
 </style>

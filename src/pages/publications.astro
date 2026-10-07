@@ -67,3 +67,83 @@ const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a
     </div>
   </div>
 </Layout>
+
+<style>
+  /* 单篇论文跳转后，与屏幕顶部保持 30px 距离。 */
+  .publication-layout :global(.paper) {
+    scroll-margin-top: 30px;
+  }
+
+  /* 标出当前跳转到的论文，不改变条目尺寸。 */
+  .publication-layout :global(.paper:target) {
+    background: rgba(40, 98, 118, 0.055);
+    outline: 1px solid rgba(40, 98, 118, 0.22);
+    outline-offset: 8px;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+  const layout = document.querySelector('.publication-layout');
+
+  if (layout instanceof HTMLElement) {
+    const alignPublicationTarget = () => {
+      // 每次重新计算，避免累积不必要的页尾空白。
+      layout.style.paddingBottom = '0px';
+
+      const targetId = window.location.hash.slice(1);
+      const target = document.getElementById(targetId);
+
+      if (
+        !target ||
+        !layout.contains(target) ||
+        !target.matches('.paper, .year-section')
+      ) {
+        return;
+      }
+
+      const topSpacing = 30;
+
+      // 目标在整张页面中的位置。
+      const targetTop =
+        target.getBoundingClientRect().top + window.scrollY;
+
+      const desiredScrollTop = Math.max(
+        0,
+        targetTop - topSpacing,
+      );
+
+      // 页面当前最多能滚动到的位置。
+      const maximumScrollTop = Math.max(
+        0,
+        document.documentElement.scrollHeight - window.innerHeight,
+      );
+
+      // 只有页尾空间不足时，才补足需要的高度。
+      const extraSpace = Math.max(
+        0,
+        Math.ceil(desiredScrollTop - maximumScrollTop),
+      );
+
+      layout.style.paddingBottom = `${extraSpace}px`;
+
+      window.scrollTo({
+        top: desiredScrollTop,
+        behavior: 'auto',
+      });
+    };
+
+    // 处理从 Research 页进入时的定位。
+    requestAnimationFrame(alignPublicationTarget);
+
+    // 图片、字体加载后，再按最终尺寸校正位置。
+    window.addEventListener('load', alignPublicationTarget, {
+      once: true,
+    });
+    document.fonts.ready.then(alignPublicationTarget);
+
+    // 处理页面内切换年份或论文，以及窗口大小变化。
+    window.addEventListener('hashchange', alignPublicationTarget);
+    window.addEventListener('resize', alignPublicationTarget);
+  }
+</script>

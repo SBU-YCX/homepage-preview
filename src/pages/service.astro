@@ -18,15 +18,12 @@ const groups = [
   },
 ];
 
-// 从年份文字中提取最大的年份。
-// 例如：2024–2026 → 2026，2025 → 2025。
 function latestYear(years: string): number {
   const matches = years.match(/\d{4}/g);
 
   return matches ? Math.max(...matches.map(Number)) : 0;
 }
 
-// 每个大类分别排序，不改变原始数据数组。
 const sortedGroups = groups.map((group) => ({
   ...group,
   items: [...group.items].sort(
