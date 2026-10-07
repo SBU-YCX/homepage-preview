@@ -389,99 +389,20 @@ const newsByYear = newsYears.map((year) => ({
 </Layout>
 
 <style>
-  .news-section {
-    margin-bottom: 42px;
-  }
-  .news-section .news-list {
-    margin-bottom: 0;
-  }
-  .news-section .news-list li:last-child {
-    margin-bottom: 0;
-  }
-  .news-archive {
-    margin-top: 18px;
-  }
-  .news-archive summary {
-    color: var(--accent);
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 550;
-    padding: 5px 0;
-  }
-  .news-archive summary::marker {
-    font-size: 10px;
-  }
-  .news-show-less {
-    display: none;
-  }
-  .news-archive[open] .news-show-more {
-    display: none;
-  }
-  .news-archive[open] .news-show-less {
-    display: inline;
-  }
-  .news-archive .older-news {
-    margin-top: 18px;
-  }
-  @media (max-width: 720px) {
-    .news-section {
-      margin-bottom: 0;
-    }
-  }
-    /* 两列从顶部对齐，左栏内容不随右栏高度分散。 */
-  .home-content {
-    align-items: start;
-  }
+  /* ===== 简介 ===== */
 
-  .home-main {
-    min-width: 0;
-  }
-
-  /* Service 紧接 Research，间距固定。 */
-  .home-main .service {
-    margin-top: 36px;
-    padding: 0;
-  }
-
-  /* Service 标题与入口同一行，窄屏允许换行。 */
-  .service .section-heading {
-    flex-wrap: wrap;
-    margin-bottom: 12px;
-  }
-
-  .service .section-heading h2 {
-    margin: 0;
-  }
-
-  /* 归档最多占 360px，内容更多时在这里滚动。 */
-  .news-years {
-    max-height: 360px;
-    overflow-y: auto;
-    margin-top: 12px;
-    padding-right: 8px;
-  }
-
-  .news-year {
-    padding: 6px 0;
-  }
-
-  .news-year + .news-year {
-    border-top: 1px solid var(--line);
-  }
-
-  .news-year > summary {
-    font-weight: 600;
-  }
-
-  .news-year-count {
-    color: var(--muted);
+  .hero .intro,
+  .hero .bio {
+    max-width: 680px;
+    margin: 0 0 14px;
+    font-size: 17px;
     font-weight: 400;
+    line-height: 1.8;
+    color: var(--ink);
   }
 
-  .news-year .news-list {
-    margin: 12px 0 18px;
-  }
-    /* 三个按钮统一为 44 × 44 像素。 */
+  /* ===== 社交链接：统一按钮与图标尺寸 ===== */
+
   .social-links a {
     box-sizing: border-box;
     width: 44px;
@@ -493,7 +414,6 @@ const newsByYear = newsYears.map((year) => ({
     align-items: center;
   }
 
-  /* 图标统一尺寸，并使用按钮的文字颜色。 */
   .social-links svg {
     display: block;
     width: 22px;
@@ -506,40 +426,56 @@ const newsByYear = newsYears.map((year) => ({
     outline-offset: 3px;
   }
 
-    /* 简介和学术背景使用相同的正文样式。 */
-  .hero .intro,
-  .hero .bio {
-    font-size: 17px;
-    line-height: 1.8;
-    font-weight: 400;
+  /* ===== 首页两栏布局 ===== */
+
+  .home-content {
+    align-items: start;
+  }
+
+  .home-main {
+    min-width: 0;
+  }
+
+  /* ===== 左栏三个大板块：统一标题 ===== */
+
+  .home-main > section > .section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-bottom: 22px;
+  }
+
+  .home-main > section > .section-heading > h2 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.6px;
     color: var(--ink);
-    max-width: 680px;
-    margin: 0 0 14px;
   }
 
-  @media (max-width: 720px) {
-    .hero .intro,
-    .hero .bio {
-      font-size: 16px;
-      line-height: 1.75;
-    }
-  }
-    /* 桌面端：三个研究方向在各自栏位内居中。 */
-  @media (min-width: 721px) {
-    .focus-strip .focus-item,
-    .focus-strip .focus-item:first-child {
-      padding: 0 24px;
-      text-align: center;
-    }
+  /* 大板块之间：较深的 2px 分隔线。 */
+  .home-main > .project-participation,
+  .home-main > .service {
+    margin-top: 32px;
+    padding: 32px 0 0;
+    border-top: 2px solid var(--line-strong, #98abb1);
   }
 
-  .home-main .project-participation {
-    margin-top: 36px;
+  /*
+   * 论文之间沿用全局的 1px 浅色细线。
+   * 最后一篇去掉底线和底部留白，
+   * 由 Projects 上方的板块分隔线接替。
+   */
+  .home-main .paper-list :global(.paper:last-child) {
+    border-bottom: 0;
+    padding-bottom: 0;
   }
 
-  .project-participation .section-heading {
-    margin-bottom: 18px;
-  }
+  /* ===== 项目参与经历 ===== */
 
   .project-list {
     margin: 0;
@@ -547,6 +483,7 @@ const newsByYear = newsYears.map((year) => ({
     list-style: none;
   }
 
+  /* 同一板块内的项目之间：1px 浅色细线。 */
   .project-list li + li {
     margin-top: 18px;
     padding-top: 18px;
@@ -567,5 +504,114 @@ const newsByYear = newsYears.map((year) => ({
     font-size: 14px;
     line-height: 1.7;
     color: var(--muted);
+  }
+
+  /* ===== News：最新消息 ===== */
+
+  .news-section {
+    margin-bottom: 42px;
+  }
+
+  .news-section .news-list {
+    margin-bottom: 0;
+  }
+
+  .news-section .news-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ===== News：展开与收起 ===== */
+
+  .news-archive {
+    margin-top: 18px;
+  }
+
+  .news-archive summary {
+    padding: 5px 0;
+    font-size: 13px;
+    font-weight: 550;
+    color: var(--accent);
+    cursor: pointer;
+  }
+
+  .news-archive summary::marker {
+    font-size: 10px;
+  }
+
+  .news-show-less {
+    display: none;
+  }
+
+  .news-archive[open] .news-show-more {
+    display: none;
+  }
+
+  .news-archive[open] .news-show-less {
+    display: inline;
+  }
+
+  /* ===== News：按年份归档，内部滚动 ===== */
+
+  .news-years {
+    max-height: 360px;
+    overflow-y: auto;
+    margin-top: 12px;
+    padding-right: 8px;
+  }
+
+  .news-year {
+    padding: 6px 0;
+  }
+
+  .news-year + .news-year {
+    border-top: 1px solid var(--line);
+  }
+
+  .news-year > summary {
+    font-weight: 600;
+  }
+
+  .news-year-count {
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .news-year .news-list {
+    margin: 12px 0 18px;
+  }
+
+  /* ===== 桌面端 ===== */
+
+  @media (min-width: 721px) {
+    /* 三个研究方向在各自栏位内居中。 */
+    .focus-strip .focus-item,
+    .focus-strip .focus-item:first-child {
+      padding: 0 24px;
+      text-align: center;
+    }
+  }
+
+  /* ===== 手机端 ===== */
+
+  @media (max-width: 720px) {
+    .hero .intro,
+    .hero .bio {
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .home-main > section > .section-heading > h2 {
+      font-size: 28px;
+    }
+
+    .home-main > .project-participation,
+    .home-main > .service {
+      margin-top: 28px;
+      padding-top: 28px;
+    }
+
+    .news-section {
+      margin-bottom: 0;
+    }
   }
 </style>
