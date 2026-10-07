@@ -8,6 +8,7 @@ export const conferenceService = [
   { short: 'AISTATS', name: 'International Conference on Artificial Intelligence and Statistics', years: '2025–2026' },
   { short: 'ICCV', name: 'IEEE/CVF International Conference on Computer Vision', years: '2025' },
   { short: 'CVPR', name: 'IEEE/CVF Conference on Computer Vision and Pattern Recognition', years: '2025' },
+  { short: 'ECCV', name: 'European Conference on Computer Vision', years: '2026' },
   { short: 'WACV', name: 'IEEE/CVF Winter Conference on Applications of Computer Vision', years: '2025' },
   { short: 'BMVC', name: 'British Machine Vision Conference', years: '2026' },
   { short: 'ICPR', name: 'International Conference on Pattern Recognition', years: '2024–2026' },
@@ -26,7 +27,7 @@ export const journalService = [
   { short: 'JRRAS', name: 'Journal of Radiation Research and Applied Sciences', years: '2025' },
   { short: 'AJNNA', name: 'American Journal of Neural Networks and Applications', years: '' },
   { short: 'FSJ', name: 'Financial Statistical Journal', years: '2024' },
-  { short: 'PeerJ Computer Science', name: 'PeerJ Computer Science', years: '' },
+  { short: 'PeerJ Computer Science', name: 'PeerJ Computer Science', years: '2024' },
 ];
 export const secondaryService = [
   { short: 'AAAI', name: 'AAAI Conference on Artificial Intelligence', years: '2024' },
