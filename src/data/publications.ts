@@ -20,6 +20,7 @@ export type Publication = {
   citation?: string;
   bibtex?: string;
   preprint?: boolean;
+  publicationUrl?: string;
 };
 
 export const publications: Publication[] = [
@@ -27,6 +28,7 @@ export const publications: Publication[] = [
     id: 'puppet-cnn',
     name: 'Puppet-CNN',
     title: 'Continuous Parameter Dynamics for Input-Adaptive Convolutional Networks',
+    publicationUrl: 'https://link.springer.com/chapter/10.1007/978-3-032-37556-8_31', 
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'ECCV 2026',
     year: 2026,
@@ -47,6 +49,7 @@ export const publications: Publication[] = [
     id: 'infinity-net',
     name: '∞-Net',
     title: 'An Unsupervised Model for Online Graph Time-Series Denoising',
+    publicationUrl: 'https://link.springer.com/chapter/10.1007/978-981-96-6582-2_8', 
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'ICONIP 2024',
     year: 2024,
@@ -68,6 +71,7 @@ export const publications: Publication[] = [
     id: 'evolved-differential',
     name: 'Evolved Differential Model',
     title: 'for Sporadic Graph Time-Series Prediction',
+    publicationUrl: 'https://ieeexplore.ieee.org/abstract/document/10706763', 
     authors: ['Yucheng Xing', 'Jacqueline Wu', 'Yingru Liu', 'Xuewen Yang', 'Xin Wang'],
     venue: 'Intelligent and Converged Networks',
     year: 2024,
@@ -88,6 +92,7 @@ export const publications: Publication[] = [
     id: 'hdg-ode',
     name: 'HDG-ODE',
     title: 'A Hierarchical Continuous-Time Model for Human Pose Forecasting',
+    publicationUrl: 'https://ieeexplore.ieee.org/abstract/document/10377034?casa_token=vFB3meTr5z0AAAAA:BKu74lHDTHVlIkH3F3PwCkrDkFTKqVjjXh0j2c8Hknq7VEk7hbp7DFk0dF2Iyvqt7ODJ-7Lpyw', 
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'ICCV 2023',
     year: 2023,
@@ -109,6 +114,7 @@ export const publications: Publication[] = [
     id: 'aggdn',
     name: 'AGGDN',
     title: 'A Continuous Stochastic Predictive Model for Monitoring Sporadic Time Series on Graphs',
+    publicationUrl: 'https://link.springer.com/chapter/10.1007/978-981-99-8079-6_11', 
     authors: ['Yucheng Xing', 'Jacqueline Wu', 'Yingru Liu', 'Xuewen Yang', 'Xin Wang'],
     venue: 'ICONIP 2023',
     year: 2023,
@@ -130,6 +136,7 @@ export const publications: Publication[] = [
     id: 'stochastic-networks',
     name: 'Continuous-Time Stochastic Differential Networks',
     title: 'for Sporadic Time Series Modeling',
+    publicationUrl: 'https://link.springer.com/chapter/10.1007/978-3-030-92307-5_40', 
     authors: [
       'Yingru Liu',
       'Yucheng Xing',
@@ -158,6 +165,7 @@ export const publications: Publication[] = [
     id: 'multi-person-pose',
     name: 'Multi-person 3D Pose Estimation',
     title: 'from Monocular Image Sequences',
+    publicationUrl: 'https://link.springer.com/chapter/10.1007/978-3-030-36711-4_2', 
     authors: [
       'Ran Li',
       'Nayun Xu',
@@ -219,7 +227,7 @@ export const preprints: Publication[] = [
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'arXiv · 2026',
     year: 2026,
-    paper: 'https://arxiv.org/abs/2603.09054',
+    publicationUrl: 'https://arxiv.org/abs/2603.09054',
     preprint: true,
   },
 
@@ -230,7 +238,7 @@ export const preprints: Publication[] = [
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'arXiv · 2026',
     year: 2026,
-    paper: 'https://arxiv.org/abs/2603.07361',
+    publicationUrl: 'https://arxiv.org/abs/2603.07361',
     preprint: true,
   },
 
@@ -241,7 +249,7 @@ export const preprints: Publication[] = [
     authors: ['Yucheng Xing*', 'Jinxing Yin*', 'Xiaodong Liu*', 'Xin Wang'],
     venue: 'arXiv · 2025 · * Equal contribution',
     year: 2025,
-    paper: 'https://arxiv.org/abs/2510.27169',
+    publicationUrl: 'https://arxiv.org/abs/2510.27169',
     preprint: true,
   },
 
@@ -253,7 +261,7 @@ export const preprints: Publication[] = [
     venue: 'arXiv · 2024',
     year: 2024,
     description: 'Adaptive control of the diffusion process for efficient conditional generation.',
-    paper: 'https://arxiv.org/abs/2411.15199',
+    publicationUrl: 'https://arxiv.org/abs/2411.15199',
     preprint: true,
   },
 
@@ -264,7 +272,7 @@ export const preprints: Publication[] = [
     authors: ['Xiaodong Liu', 'Yucheng Xing', 'Xin Wang'],
     venue: 'arXiv · 2024',
     year: 2024,
-    paper: 'https://arxiv.org/abs/2411.10961',
+    publicationUrl: 'https://arxiv.org/abs/2411.10961',
     preprint: true,
   },
 ];

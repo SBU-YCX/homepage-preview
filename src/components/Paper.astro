@@ -51,7 +51,7 @@ const publicationType = paper.preprint
     <!-- 论文标题链接与下方 Paper 按钮均使用 publications.ts 中的 paper 字段。 -->
     <h3>
       <a
-        href={paper.paper}
+        href={paper.publicationUrl ?? paper.paper}
         target="_blank"
         rel="noopener noreferrer"
       >
