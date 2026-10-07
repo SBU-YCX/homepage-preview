@@ -251,7 +251,7 @@ export const preprints: Publication[] = [
     authors: ['Yucheng Xing*', 'Jinxing Yin*', 'Xiaodong Liu*', 'Xin Wang'],
     venue: 'arXiv · 2025',
     year: 2025,
-    description: '* Equal contribution'
+    description: '* Equal contribution',
     publicationUrl: 'https://arxiv.org/abs/2510.27169',
     preprint: true,
   },
