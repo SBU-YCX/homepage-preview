@@ -235,6 +235,37 @@ const newsByYear = newsYears.map((year) => ({
       </section>
 
       <section
+        class="project-participation"
+        aria-labelledby="projects-heading"
+      >
+        <div class="section-heading">
+          <h2 id="projects-heading">Research Project Participation</h2>
+        </div>
+
+        <ul class="project-list">
+          <li>
+            <h3>
+              NSF Convergence Accelerator–Track D:
+              AI-Enabled Provably Resilient Networked Microgrids
+            </h3>
+            <p>
+              Funding agency: U.S. National Science Foundation (NSF)
+            </p>
+          </li>
+
+          <li>
+            <h3>
+              Solar PLUS: Solar Integration through Physics-Aware
+              Learning Based Ultra-Scalable Modeling and Analytics
+            </h3>
+            <p>
+              Funding agency: U.S. Department of Energy (DOE)
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section
         class="service"
         aria-labelledby="service-heading"
       >
@@ -500,5 +531,41 @@ const newsByYear = newsYears.map((year) => ({
       padding: 0 24px;
       text-align: center;
     }
+  }
+
+  .home-main .project-participation {
+    margin-top: 36px;
+  }
+
+  .project-participation .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .project-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-list li + li {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .project-list h3 {
+    margin: 0 0 8px;
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .project-list p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
   }
 </style>
