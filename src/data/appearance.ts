@@ -12,7 +12,7 @@ export const appearance = {
     },
     {
       id: 'shoreline',
-      file: 'shoreline.jpeg',
+      file: 'shoreline.jpg',
       label: 'Light on the water',
       position: '50% 52%',
       mobilePosition: '50% 50%',
@@ -33,7 +33,7 @@ export const appearance = {
     },
     {
       id: 'sunset',
-      file: 'sunset.jpeg',
+      file: 'sunset.jpg',
       label: 'Sunset at the shore',
       position: '50% 48%',
       mobilePosition: '50% 48%',
