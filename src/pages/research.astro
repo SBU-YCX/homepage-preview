@@ -1,25 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RelatedWork from '../components/RelatedWork.astro';
-import { path } from '../lib/paths';
+
+// 顺序与首页一致：Generative → Continuous-Time → Adaptive。
+// 保留下面三个 section 的 id，首页的方向链接会跳到对应位置。
+// 每个方向下的 RelatedWork 列表控制代表论文；id 对应 publications.ts。
 ---
 
 <Layout
-  title="Research — Yucheng Xing"
+  title="Research Interests — Yucheng Xing"
   active="research"
 >
   <header class="page-intro">
-    <p class="eyebrow">Research interests</p>
-    <h1>Learning through dynamics.</h1>
+    <p class="eyebrow">Research</p>
+    <h1>Research Interests</h1>
     <p>
-      My research connects generative modeling, differential equations, and adaptive computation,
-      with applications in computer vision and graph time series.
+      My research connects generative modeling, continuous-time dynamics, and adaptive neural
+      architectures, with applications in computer vision and graph-based spatiotemporal
+      forecasting.
     </p>
   </header>
+
   <div class="research-list">
+    <!-- 01：生成建模。应用细节由下面的代表论文呈现。 -->
     <section
       class="research-section"
       id="generative"
+      aria-labelledby="generative-heading"
     >
       <span
         class="research-number"
@@ -27,34 +34,62 @@ import { path } from '../lib/paths';
       >
         01
       </span>
-      <div>
-        <h2>Efficient generative AI</h2>
+
+      <div class="research-copy">
+        <h2 id="generative-heading">Generative AI</h2>
         <p>
-          I investigate how to control the computation used by diffusion models while retaining
-          useful generative structure. My work explores input-adaptive generation, structured
-          diffusion processes, and conditional image restoration.
+          I study how generative models can use structural and conditional information to guide the
+          generation process. My goal is to make generation more controllable and computationally
+          efficient while preserving output quality and consistency.
         </p>
-        <p>
-          Applications include image generation, rain removal, and forecasting wildfire risk over
-          multiple future horizons.
-        </p>
+
         <RelatedWork
           works={[
-            { id: 'ac-diff', name: 'AC-Diff', venue: 'arXiv · 2024' },
-            { id: 'spectral-diffusion', name: 'Spectral Diffusion', venue: 'arXiv · 2026' },
-            { id: 'ntree-diffusion', name: 'N-Tree Diffusion', venue: 'arXiv · 2026' },
+            {
+              id: 'ac-diff',
+              name: 'Input-Adaptive Generative Dynamics',
+              venue: 'arXiv · 2024',
+            },
+            {
+              id: 'spectral-diffusion',
+              name: 'Spectral-Structured Diffusion',
+              venue: 'arXiv · 2026',
+            },
+            {
+              id: 'ntree-diffusion',
+              name: 'N-Tree Diffusion',
+              venue: 'arXiv · 2026',
+            },
+            {
+              id: 'dancer',
+              name: 'DANCER',
+              venue: 'arXiv · 2025',
+            },
           ]}
         />
       </div>
-      <aside class="research-note">
-        <span class="eyebrow">Current questions</span>
-        <p>How much computation does each input need?</p>
-        <p>How can the structure of a task inform the generation process?</p>
+
+      <!-- 暂用统一的问题侧栏；以后选好概念图可替换整个 aside。 -->
+      <aside
+        class="research-note"
+        aria-labelledby="generative-questions"
+      >
+        <span
+          class="eyebrow"
+          id="generative-questions"
+        >
+          Key questions
+        </span>
+        <p>How can structure and conditioning guide generation?</p>
+        <p>How can generation quality be maintained with less computation?</p>
       </aside>
     </section>
+
+    <!-- 02：连续时间建模。这里选择以连续动力学为核心的工作。 -->
     <section
       class="research-section"
-      id="adaptive"
+      id="continuous"
+      aria-labelledby="continuous-heading"
     >
       <span
         class="research-number"
@@ -62,32 +97,56 @@ import { path } from '../lib/paths';
       >
         02
       </span>
-      <div>
-        <h2>Adaptive neural architectures</h2>
+
+      <div class="research-copy">
+        <h2 id="continuous-heading">Continuous-Time Modeling</h2>
         <p>
-          I study architectures that adjust computation to the input. Puppet-CNN represents
-          convolutional parameters as a continuous dynamical system, generating layer parameters
-          along a learned trajectory.
+          I study how to learn the evolution of structured systems from sparse, irregular, and noisy
+          observations. Using neural differential equations, I aim to capture temporal dynamics,
+          interactions among entities, and uncertainty within continuous-time models.
         </p>
-        <p>
-          This perspective connects compact model storage with flexible, input-adaptive computation.
-        </p>
-        <RelatedWork works={[{ id: 'puppet-cnn', name: 'Puppet-CNN', venue: 'ECCV · 2026' }]} />
-      </div>
-      <figure class="research-figure">
-        <img
-          src={path('images/puppet-cnn.png')}
-          alt="Puppet-CNN parameter flow and adaptive convolutional architecture"
-          width="320"
-          height="220"
-          loading="lazy"
+
+        <RelatedWork
+          works={[
+            {
+              id: 'hdg-ode',
+              name: 'HDG-ODE',
+              venue: 'ICCV · 2023',
+            },
+            {
+              id: 'aggdn',
+              name: 'AGGDN',
+              venue: 'ICONIP · 2023',
+            },
+            {
+              id: 'evolved-differential',
+              name: 'Evolved Differential Model',
+              venue: 'Intelligent and Converged Networks · 2024',
+            },
+          ]}
         />
-        <figcaption>Puppet-CNN: continuous parameter dynamics.</figcaption>
-      </figure>
+      </div>
+
+      <aside
+        class="research-note"
+        aria-labelledby="continuous-questions"
+      >
+        <span
+          class="eyebrow"
+          id="continuous-questions"
+        >
+          Key questions
+        </span>
+        <p>How can models learn dynamics between irregular observations?</p>
+        <p>How can interactions and uncertainty be represented in continuous time?</p>
+      </aside>
     </section>
+
+    <!-- 03：自适应网络结构。代表论文数量不需要与其他方向相同。 -->
     <section
       class="research-section"
-      id="continuous"
+      id="adaptive"
+      aria-labelledby="adaptive-heading"
     >
       <span
         class="research-number"
@@ -95,61 +154,106 @@ import { path } from '../lib/paths';
       >
         03
       </span>
-      <div>
-        <h2>Continuous-time neural modeling</h2>
+
+      <div class="research-copy">
+        <h2 id="adaptive-heading">Adaptive Neural Architectures</h2>
         <p>
-          I use neural differential equations to model motion and graph time series in continuous
-          time. These models provide a natural way to work with irregular observations and evolving
-          relationships.
+          I study how neural networks can adapt their parameters and computational depth to
+          individual inputs. My goal is to make computation more flexible, balancing predictive
+          performance, parameter storage, and inference cost.
         </p>
-        <p>
-          My work includes hierarchical human pose forecasting, stochastic prediction on graphs, and
-          unsupervised online denoising.
-        </p>
+
         <RelatedWork
           works={[
-            { id: 'hdg-ode', name: 'HDG-ODE', venue: 'ICCV · 2023' },
-            { id: 'aggdn', name: 'AGGDN', venue: 'ICONIP · 2023' },
-            { id: 'infinity-net', name: '∞-Net', venue: 'ICONIP · 2024' },
+            {
+              id: 'puppet-cnn',
+              name: 'Puppet-CNN',
+              venue: 'ECCV · 2026',
+            },
           ]}
         />
       </div>
-      <figure class="research-figure">
-        <img
-          src={path('images/hdg-ode.png')}
-          alt="Hierarchical graph ODE framework for human pose forecasting"
-          width="320"
-          height="200"
-          loading="lazy"
-        />
-        <figcaption>HDG-ODE: hierarchical dynamics for human motion.</figcaption>
-      </figure>
+
+      <aside
+        class="research-note"
+        aria-labelledby="adaptive-questions"
+      >
+        <span
+          class="eyebrow"
+          id="adaptive-questions"
+        >
+          Key questions
+        </span>
+        <p>How much computation does each input need?</p>
+        <p>How can compact parameterizations support flexible computation?</p>
+      </aside>
     </section>
   </div>
 </Layout>
+
 <style>
+  .research-copy {
+    min-width: 0;
+  }
+
+  /* 长论文名和期刊名在窄屏上正常换行。 */
+  .research-copy :global(.related li) {
+    max-width: 100%;
+  }
+
+  .research-copy :global(.related a) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .research-copy :global(.related-name),
+  .research-copy :global(.related-venue) {
+    overflow-wrap: anywhere;
+  }
+
+  /* 三个方向统一使用相同的问题侧栏。 */
   .research-note {
-    padding: 28px;
+    min-width: 0;
+    padding: 26px;
     background: var(--wash);
     border-left: 2px solid var(--accent);
-    align-self: center;
+    align-self: start;
   }
+
+  .research-note .eyebrow {
+    display: block;
+    margin-bottom: 16px;
+  }
+
   .research-note p {
     font-family: var(--serif);
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.6;
     color: var(--ink);
+    margin: 0 0 18px;
   }
+
   .research-note p:last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: 1000px) {
+    .research-note {
+      padding: 22px;
+    }
+
+    .research-note p {
+      font-size: 19px;
+    }
+  }
+
   @media (max-width: 720px) {
     .research-note {
       grid-column: 2;
-      padding: 22px;
+      padding: 20px;
     }
+
     .research-note p {
-      font-size: 19px;
+      font-size: 18px;
     }
   }
 </style>
