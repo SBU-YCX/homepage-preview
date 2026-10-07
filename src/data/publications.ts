@@ -97,7 +97,7 @@ export const publications: Publication[] = [
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'ICCV 2023',
     year: 2023,
-    description: '[Acceptance Rate: 26.15%]'
+    description: '[Acceptance Rate: 26.15%]', 
     image: 'hdg-ode.png',
     paper: 'https://drive.google.com/file/d/1OvwnWNbpqJJblmRF9eNGytzT8AvUnizG/view',
     code: 'https://github.com/SBU-YCX/HDG-ODE',
