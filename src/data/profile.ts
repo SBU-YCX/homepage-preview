@@ -7,6 +7,7 @@ export const profile = {
   scholar: 'https://scholar.google.com/citations?hl=en&user=Kqdp2M4AAAAJ&view_op=list_works&sortby=pubdate',
   github: 'https://github.com/SBU-YCX',
   linkedin: 'https://www.linkedin.com/in/yucheng-xing-82b65117b/',
+  leetcode: 'https://leetcode.com/u/EricYXing/',
   cv: 'files/CV.pdf',
 };
 

@@ -40,11 +40,10 @@ const newsByYear = newsYears.map((year) => ({
       </h1>
       <p class="role">{profile.role}</p>
       <p class="intro">
-        I study <strong>generative models</strong> and <strong>neural dynamics</strong>, with a
-        focus on making learning and inference more efficient and adaptive.
+        My research focuses on efficient and adaptive machine learning, with applications in computer vision and graph-based spatiotemporal forecasting.
       </p>
       <p class="bio">
-        I received my Ph.D. in Electrical Engineering from Stony Brook University in 2026, advised
+        I received my Ph.D. in Electrical Engineering from Stony Brook University in 2026, advised 
         by{' '}
         <a
           href="https://www.ece.stonybrook.edu/~xwang/"
@@ -53,8 +52,7 @@ const newsByYear = newsYears.map((year) => ({
         >
           Prof. Xin Wang
         </a>
-        . My work spans diffusion models, neural differential equations, and adaptive neural
-        architectures.
+        .
       </p>
             <!--
         Icons: Font Awesome Free 7.3.1 by Fonticons, Inc.
@@ -142,6 +140,43 @@ const newsByYear = newsYears.map((year) => ({
             />
           </svg>
         </a>
+
+                <a
+          href={profile.leetcode}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LeetCode"
+          title="LeetCode"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226
+                 l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104
+                 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362
+                 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818
+                 l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074
+                 l2.396-2.392c.54-.54.54-1.414.003-1.955
+                 a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392
+                 a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193
+                 c-.652-.64-.972-1.469-.948-2.263
+                 a2.68 2.68 0 0 1 .066-.523
+                 2.545 2.545 0 0 1 .619-1.164L9.13 8.114
+                 c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831
+                 c.593.48 1.461.387 1.94-.207
+                 a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831
+                 c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158
+                 A1.384 1.384 0 0 0 13.483 0z
+                 m-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382
+                 1.38 1.38 0 0 0 1.38 1.382H20.79
+                 a1.38 1.38 0 0 0 1.38-1.382
+                 1.38 1.38 0 0 0-1.38-1.382z"
+            />
+          </svg>
+        </a>
       </div>
       <p class="contact-email">
         <span>Email</span> <span class="email-display">{profile.emailDisplay}</span>
@@ -163,16 +198,16 @@ const newsByYear = newsYears.map((year) => ({
     aria-label="Research areas"
   >
     <div class="focus-item">
-      <a href={path('research/#generative')}>Efficient Generative AI</a>
-      <span>Diffusion · Conditional generation</span>
+      <a href={path('research/#generative')}>Generative AI</a>
+      <span>Diffusion Models</span>
     </div>
     <div class="focus-item">
       <a href={path('research/#continuous')}>Continuous-Time Modeling</a>
-      <span>Neural ODEs / SDEs · Graph dynamics</span>
+      <span>Neural ODEs · Neural SDEs</span>
     </div>
     <div class="focus-item">
-      <a href={path('research/#adaptive')}>Adaptive Architectures</a>
-      <span>Input-adaptive computation</span>
+      <a href={path('research/#adaptive')}>Adaptive Neural Architectures</a>
+      <span>Input-Adaptive Computation</span>
     </div>
   </div>
   <div class="home-content">
@@ -438,5 +473,24 @@ const newsByYear = newsYears.map((year) => ({
   .social-links a:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
+  }
+
+    /* 简介和学术背景使用相同的正文样式。 */
+  .hero .intro,
+  .hero .bio {
+    font-size: 17px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: var(--ink);
+    max-width: 680px;
+    margin: 0 0 14px;
+  }
+
+  @media (max-width: 720px) {
+    .hero .intro,
+    .hero .bio {
+      font-size: 16px;
+      line-height: 1.75;
+    }
   }
 </style>
