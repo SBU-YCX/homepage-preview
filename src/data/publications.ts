@@ -32,6 +32,7 @@ export const publications: Publication[] = [
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'ECCV 2026',
     year: 2026,
+    description: '[Acceptance Rate: 27.53%]', 
     image: 'puppet-cnn.png',
     paper: 'https://drive.google.com/file/d/1jg9L6P6L6sWORdaZQ2WfVojQDaW64Swm/view',
     poster: 'https://drive.google.com/file/d/1ZaLAuHhjRIm_JD6oUzaM3spliccsg0Dw/view',
@@ -96,6 +97,7 @@ export const publications: Publication[] = [
     authors: ['Yucheng Xing', 'Xin Wang'],
     venue: 'ICCV 2023',
     year: 2023,
+    description: '[Acceptance Rate: 26.15%]'
     image: 'hdg-ode.png',
     paper: 'https://drive.google.com/file/d/1OvwnWNbpqJJblmRF9eNGytzT8AvUnizG/view',
     code: 'https://github.com/SBU-YCX/HDG-ODE',

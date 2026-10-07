@@ -4,7 +4,7 @@ export const profile = {
   chineseName: '邢宇程',
   role: 'Research Associate · Stony Brook University',
   emailDisplay: 'ericxing0430 [at] gmail [dot] com',
-  scholar: 'https://scholar.google.com/citations?user=Kqdp2M4AAAAJ',
+  scholar: 'https://scholar.google.com/citations?hl=en&user=Kqdp2M4AAAAJ&view_op=list_works&sortby=pubdate',
   github: 'https://github.com/SBU-YCX',
   linkedin: 'https://www.linkedin.com/in/yucheng-xing-82b65117b/',
   cv: 'https://yuchengxing.me/cv/',
