@@ -250,7 +250,7 @@ const newsByYear = newsYears.map((year) => ({
 
         <p>
           I serve as a reviewer for conferences and journals including
-          CVPR, ICCV, NeurIPS, ICML, ICLR, AAAI, and IEEE TPAMI.
+          CVPR, ICCV, ECCV, NeurIPS, ICML, ICLR, AAAI, and IEEE TPAMI.
         </p>
       </section>
     </div>
@@ -491,6 +491,14 @@ const newsByYear = newsYears.map((year) => ({
     .hero .bio {
       font-size: 16px;
       line-height: 1.75;
+    }
+  }
+    /* 桌面端：三个研究方向在各自栏位内居中。 */
+  @media (min-width: 721px) {
+    .focus-strip .focus-item,
+    .focus-strip .focus-item:first-child {
+      padding: 0 24px;
+      text-align: center;
     }
   }
 </style>
