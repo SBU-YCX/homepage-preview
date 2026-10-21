@@ -22,13 +22,13 @@ export const conferenceService = [
   {
     short: 'ICLR',
     name: 'International Conference on Learning Representations',
-    years: '2025–2026',
+    years: '2025–2027',
   },
 
   {
     short: 'AISTATS',
     name: 'International Conference on Artificial Intelligence and Statistics',
-    years: '2025–2026',
+    years: '2025–2027',
   },
 
   { 
